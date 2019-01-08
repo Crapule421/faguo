@@ -1,0 +1,116 @@
+/*BREADCRUMB*/
+.breadcrumb {
+	padding-top: 15px;
+}
+
+.home {
+	color: #8e6b52;
+}
+
+.home:hover {
+	color: #4c333e;
+}
+
+ol {
+	margin-top: 10px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+/* LIGNE*/
+
+.cardX1 {
+	grid-row: 1/2;
+	grid-column: 2/3;
+	margin-right: 30px;
+	display: flex;
+}
+
+.cardX2 {
+	grid-row: 2/3;
+	grid-column: 2/3;
+	margin-right: 30px;
+	display: flex;
+}
+
+.cardX3 {
+	grid-row: 3/4;
+	grid-column: 2/3;
+	margin-right: 30px;
+	display: flex;
+}
+
+/*CARD*/
+.card {
+	text-align: center;
+	margin: 15px;
+}
+
+.produit {
+	color: #996e82;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.produit:hover {
+	color:#4c333e;
+}
+
+.card-title {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+/*CARD - 2*/
+.ivy2 {
+	width: 286px;
+	height: 246px;
+}
+
+/*CARD - 3*/
+.common {
+	width: 286px;
+	height: 246px;
+}
+
+/*LIGNE - 2*/
+.birch {
+	width: 286px;
+	height: 248px;
+}
+
+.cypress {
+	width: 286px;
+	height: 248px;	
+}
+
+/*LIGNE - 3*/
+.aspenor {
+	width: 286px;
+	height: 248px;	
+}
+
+/*image*/
+.img {
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+
+.card:hover .img {
+  opacity: 0.3;
+}
+
+.middle {
+	ransition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.card:hover .middle {
+  opacity: 0.8;
+}
