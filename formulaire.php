@@ -13,6 +13,8 @@
 <body>
 
 	<header>
+
+    
 		
 		<div class="item">
 			<img src="img/reseau.png" class="reseau">
@@ -50,42 +52,58 @@
 		</ul>
 	</header>
 	
+  <?php
+      
+      require_once 'config.php';
+      try{
+      $conn= new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
+      echo "<p>Connected to ".$dbname." at ".$host." successfully.</p>";
+      
+      
+      }
+
+    catch(PDOException $pe){
+      die("<p>Could not connect to the database $dbname : ".$pe->getMessage()."</p>");
+    }
+
+
+    ?>
 
 	<div id="formulaire">
 		<div id="inscription">
-			<form>
+			<form action="newUser.php" method="post">
 				<h4 id="inscrire">Inscrivez-vous:</h4>
   				<div class="form-group">
     				<label for="nom">Nom:</label>
-    				<input type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
+    				<input name="lastname" type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
   				</div>
   				<div class="form-group">
     				<label for="prenom">Prénom:</label>
-    				<input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
+    				<input name="firstname" type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
   				</div>
   				<div class="form-group">
     				<label for="adresse">Adresse:</label>
-    				<input type="text" class="form-control" id="adresse" placeholder="Nom, n° de rue">
+    				<input name="address" type="text" class="form-control" id="adresse" placeholder="Nom, n° de rue">
   				</div>
   				<div class="form-group">
     				<label for="ville">Ville:</label>
-    				<input type="text" class="form-control" id="ville" placeholder="Ville">
+    				<input name="city" type="text" class="form-control" id="ville" placeholder="Ville">
   				</div>
   				<div class="form-group">
     				<label for="mail">E-mail:</label>
-    				<input type="text" class="form-control" id="mail" placeholder="exemple@exemple.fr">
+    				<input name ="mail" type="text" class="form-control" id="mail" placeholder="exemple@exemple.fr">
   				</div>
   				<div class="form-group">
     				<label for="mdp">Mot de passe:</label>
-    				<input type="password" class="form-control" id="mdp">
+    				<input name="password" type="password" class="form-control" id="mdp">
   				</div>
   				<div class="form-group">
     				<label for="confirmation">Confirmez votre mot de passe:</label>
-    				<input type="password" class="form-control" id="confirmation">
+    				<input name="password_confirm" type="password" class="form-control" id="confirmation">
   				</div>
-  				
+  				<input type="submit">
 			</form>
-			<button id="creer">Créer mon compte</button>
+			<!-- <button id="creer" href="newuser.php">Créer mon compte</button> -->
 		</div>
 
 		<div id="connexion">
