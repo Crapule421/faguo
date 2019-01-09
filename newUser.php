@@ -83,7 +83,7 @@
             
 
             //Préparation de la requête
-            $req= $bdd->prepare('INSERT INTO user (user_id, mail, lastname, firstname, password, newsletter, role_id)'
+            $req= $bdd->prepare('INSERT INTO user (mail, lastname, firstname, password, newsletter, role_id)'
               .' VALUES (:mail, :lastname, :firstname, :password, :newsletter, :role_id)');
 
             
@@ -92,7 +92,6 @@
 
             //Requete SQL
             $req->execute(array(
-                        'user_id' =>"",
                         'mail' =>$mail,
                        'lastname' =>$lastname,
                        'firstname' =>$firstname,
