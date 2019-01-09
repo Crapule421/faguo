@@ -18,20 +18,20 @@
 		<div class="items">
 			<img src="img/reseau.png" class="icon">
 			<p id="langue">FR/EN</p>
-			<a href="formulaire.php"><img src="img/icon_user.png" class="user"></a>
-			<a href="panier.php"><img src="img/panier.png" class="panier"></a>
+			<a href="formulaire.html"><img src="img/icon_user.png" class="user"></a>
+			<a href="panier.html"><img src="img/panier.png" class="panier"></a>
 		</div>
 
 		<ul class="nav">
 		<div class="trait1"></div>
 		  <li class="nav-item menuItem">
-		    <a class="nav-link active menu" href="indexfinal.php">HOME</a>
+		    <a class="nav-link active menu" href="indexfinal.html">HOME</a>
 		  </li>
 		  <li class="nav-item menuItem">
 		    <a class="nav-link menu" href="#">IDÉES CADEAUX</a>
 		  </li>
 		  <li class="nav-item menuItem">
-		    <a class="nav-link menu" href="femme.php">FEMMES</a>
+		    <a class="nav-link menu" href="femme.html">FEMMES</a>
 		  </li>
 		  <img src="img/logo.png" class="tailleLogo">
 		  <li class="nav-item menuItem">
@@ -50,7 +50,7 @@
 	<div class="direction">
 		<nav aria-label="breadcrumb">
 	  		<ol class="breadcrumb">
-	   			<li class="breadcrumb-item"><a href="indexfinal.php" class="home">HOME</a></li>
+	   			<li class="breadcrumb-item"><a href="indexfinal.html" class="home">HOME</a></li>
 	    		<li class="breadcrumb-item active" aria-current="page">FEMMES</li>
 	  		</ol>
 		</nav>
@@ -61,7 +61,7 @@
 			<h3 class="femme">FEMMES</h3>
 			<button type="button" class="btn btn-outline-secondary btnFil">TOUT VOIR</button>
 				<div class="dropdown">
-						  <ul class="mainmenu"> 
+						  <ul class="mainmenu">
 
 						    <li class="menuDe"><a href="">TAILLE</a>
 						      <div class="submenu">
@@ -116,33 +116,35 @@
 				</div>
 
 		</div>
+
+		<?php
+
+			require_once 'config.php';
+		      $conn= mysqli_connect($host,$username,$password,$dbname);
+					if (mysqli_connect_errno())
+  				{
+  					echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  				}
+
+				$recup = "SELECT * FROM product";
+				$result = mysqli_query($conn, $recup) or die ("erreur de recuperation : ".mysqli_error($conn));
+				while ( $record = mysqli_fetch_assoc($result)) {
+
+
+				?>
+
 	<div class="cardX1">
-		
+
   		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top ivy img" src="img/ivy.jpg" alt="Card image cap">
+    		<img class="card-img-top ivy img" src="<?php echo $record['path'];?>" alt="Card image cap">
     		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
     		<div class="card-body card">
-    			<a href="fiche-produit.php" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
-     			<h5 class="card-title">125,00 €</h5> 
+    			<a href="fiche-produit.html" class="card-link produit"><?php echo$record['model'];?><br><?php echo$record['smalldesc'];?></a>
+     			<h5 class="card-title"><?php echo $record['buying_price'];?> €</h5>
  			</div>
-  		</div>
-  		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top ivy2 img" src="img/ivy2.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
-      			<h5 class="card-title">125,00 €</h5>
-   		 	</div>
-  		</div>
-		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top common img" src="img/common.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">COMMON<br>BASKETS EN CUIR ET SUÈDE</a>
-      			<h5 class="card-title">120,00 €</h5>
-   		 	</div>
-  		</div>
 	</div>
+<?php
+}?>
 
 	<div class="cardX2">
   		<div class="card" style="width: 18rem;">
@@ -150,7 +152,7 @@
     		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
     		<div class="card-body card">
     			<a href="#" class="card-link produit">BIRCH<br>TENNIS EN LAINE GRIS CLAIR</a>
-     			<h5 class="card-title">75,00 €</h5> 
+     			<h5 class="card-title">75,00 €</h5>
  			</div>
   		</div>
   		<div class="card" style="width: 18rem;">
@@ -177,7 +179,7 @@
     		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
     		<div class="card-body card">
     			<a href="#" class="card-link produit">ASPEN<br>BASKETS EN CUIR NUDE</a>
-     			<h5 class="card-title">120,00 €</h5> 
+     			<h5 class="card-title">120,00 €</h5>
  			</div>
   		</div>
   		<div class="card" style="width: 18rem;">
@@ -202,9 +204,9 @@
 
 
 	<footer>
-		
+
 		<div class="container" id="footer">
-			
+
   			<div class="row ligne">
     			<div class="col">
       				<h6>LIENS UTILES</h6>

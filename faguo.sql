@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 08 Janvier 2019 à 16:10
+-- Généré le :  Mer 09 Janvier 2019 à 16:24
 -- Version du serveur :  5.7.24-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
@@ -58,6 +58,14 @@ CREATE TABLE `categorie` (
   `cat_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `categorie`
+--
+
+INSERT INTO `categorie` (`cat_id`, `cat_name`) VALUES
+(1, 'Femme'),
+(2, 'Homme');
+
 -- --------------------------------------------------------
 
 --
@@ -66,8 +74,15 @@ CREATE TABLE `categorie` (
 
 CREATE TABLE `color` (
   `color_id` int(11) NOT NULL,
-  `color_name` int(11) NOT NULL
+  `color_name` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `color`
+--
+
+INSERT INTO `color` (`color_id`, `color_name`) VALUES
+(1, 'bleu');
 
 -- --------------------------------------------------------
 
@@ -80,6 +95,14 @@ CREATE TABLE `disponibility` (
   `dispo_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `disponibility`
+--
+
+INSERT INTO `disponibility` (`dispo_id`, `dispo_name`) VALUES
+(1, 'Disponible'),
+(2, 'Indisponible');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +113,14 @@ CREATE TABLE `note` (
   `note_id` int(11) NOT NULL,
   `note_value` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `note`
+--
+
+INSERT INTO `note` (`note_id`, `note_value`) VALUES
+(1, 4),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -118,6 +149,13 @@ CREATE TABLE `photo` (
   `photo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `photo`
+--
+
+INSERT INTO `photo` (`path`, `product_id`, `photo_id`) VALUES
+('img/ivy.jpeg', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -145,15 +183,23 @@ CREATE TABLE `price_info` (
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `model` tinytext NOT NULL,
-  `date` date NOT NULL,
+  `addingdate` date NOT NULL,
   `buying_price` int(11) NOT NULL,
   `description` tinytext NOT NULL,
   `color_id` int(11) NOT NULL,
   `size_id` int(11) NOT NULL,
   `dispo_id` int(11) NOT NULL,
   `note_id` int(11) NOT NULL,
-  `cat_id` int(11) NOT NULL
+  `cat_id` int(11) NOT NULL,
+  `smalldesc` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `product`
+--
+
+INSERT INTO `product` (`product_id`, `model`, `addingdate`, `buying_price`, `description`, `color_id`, `size_id`, `dispo_id`, `note_id`, `cat_id`, `smalldesc`) VALUES
+(1, 'IVY', '2019-01-08', 129, 'mecouille', 1, 1, 1, 1, 1, 'BASKETS EN CUIR');
 
 -- --------------------------------------------------------
 
@@ -176,6 +222,14 @@ CREATE TABLE `size` (
   `size_id` int(11) NOT NULL,
   `size_value` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `size`
+--
+
+INSERT INTO `size` (`size_id`, `size_value`) VALUES
+(1, 38),
+(2, 39);
 
 -- --------------------------------------------------------
 
@@ -253,14 +307,16 @@ ALTER TABLE `order_history`
 -- Index pour la table `photo`
 --
 ALTER TABLE `photo`
-  ADD KEY `INDEX` (`photo_id`);
+  ADD KEY `INDEX` (`photo_id`),
+  ADD KEY `prodphoto` (`product_id`);
 
 --
 -- Index pour la table `price_info`
 --
 ALTER TABLE `price_info`
   ADD PRIMARY KEY (`price_info_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `prix` (`priceHT`);
 
 --
 -- Index pour la table `product`
@@ -271,7 +327,8 @@ ALTER TABLE `product`
   ADD KEY `product_note` (`note_id`),
   ADD KEY `product_color` (`color_id`),
   ADD KEY `product_cat` (`cat_id`),
-  ADD KEY `product_dispo` (`dispo_id`);
+  ADD KEY `product_dispo` (`dispo_id`),
+  ADD KEY `buying_price` (`buying_price`);
 
 --
 -- Index pour la table `role`
@@ -299,22 +356,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `color`
 --
 ALTER TABLE `color`
-  MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `disponibility`
 --
 ALTER TABLE `disponibility`
-  MODIFY `dispo_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `dispo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `order_history`
 --
@@ -329,7 +386,7 @@ ALTER TABLE `price_info`
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `role`
 --
@@ -339,7 +396,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `size`
 --
 ALTER TABLE `size`
-  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
@@ -370,15 +427,20 @@ ALTER TABLE `order_history`
   ADD CONSTRAINT `user_order` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
+-- Contraintes pour la table `price_info`
+--
+ALTER TABLE `price_info`
+  ADD CONSTRAINT `prix` FOREIGN KEY (`priceHT`) REFERENCES `product` (`buying_price`),
+  ADD CONSTRAINT `prodid` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+
+--
 -- Contraintes pour la table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `price_info_product` FOREIGN KEY (`product_id`) REFERENCES `price_info` (`product_id`),
   ADD CONSTRAINT `product_cat` FOREIGN KEY (`cat_id`) REFERENCES `categorie` (`cat_id`),
   ADD CONSTRAINT `product_color` FOREIGN KEY (`color_id`) REFERENCES `color` (`color_id`),
   ADD CONSTRAINT `product_dispo` FOREIGN KEY (`dispo_id`) REFERENCES `disponibility` (`dispo_id`),
   ADD CONSTRAINT `product_note` FOREIGN KEY (`note_id`) REFERENCES `note` (`note_id`),
-  ADD CONSTRAINT `product_photo` FOREIGN KEY (`product_id`) REFERENCES `photo` (`photo_id`),
   ADD CONSTRAINT `product_size` FOREIGN KEY (`size_id`) REFERENCES `size` (`size_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
