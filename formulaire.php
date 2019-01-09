@@ -1,3 +1,54 @@
+<?php
+
+      session_start();
+
+      if (isset($_SESSION['code_error_lastname'])){
+
+        if ($_SESSION['code_error_lastname'] == 1){
+          $code_error_lastname = $_SESSION['code_error_lastname'];
+          print($code_error_lastname);
+          $_SESSION['code_error_lastname']=0;
+        }
+
+        if ($_SESSION['code_error_firstname'] == 2){
+          $code_error_firstname = $_SESSION['code_error_firstname'];
+          print($code_error_firstname);
+          $_SESSION['code_error_firstname']=0;
+        }
+
+        if ($_SESSION['code_error_address'] == 3){
+          $code_error_address = $_SESSION['code_error_address'];
+          print($code_error_address);
+          $_SESSION['code_error_address']=0;
+        }
+
+        if ($_SESSION['code_error_city'] == 4){
+          $code_error_city = $_SESSION['code_error_city'];
+          print($code_error_city);
+          $_SESSION['code_error_city']=0;
+        }
+
+        if ($_SESSION['code_error_mail'] == 5){
+          $code_error_mail = $_SESSION['code_error_mail'];
+          print($code_error_mail);
+          $_SESSION['code_error_mail']=0;
+        }
+
+        if ($_SESSION['code_error_password'] == 6){
+          $code_error_password = $_SESSION['code_error_password'];
+          print($code_error_password);
+          $_SESSION['code_error_password']=0;
+        }
+
+        if ($_SESSION['code_error_password_confirm'] == 7){
+          $code_error_password_confirm = $_SESSION['code_error_password_confirm'];
+          print($code_error_password_confirm);
+          $_SESSION['code_error_password_confirm']=0;
+        }
+      }
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +64,8 @@
 <body>
 
 	<header>
+
+
 
     
 		
@@ -66,6 +119,11 @@
       die("<p>Could not connect to the database $dbname : ".$pe->getMessage()."</p>");
     }
 
+/*
+<?php if ($code_error_lastname == 1){ print(" is-invalid") } ?>
+                        */
+
+    
 
     ?>
 
@@ -75,31 +133,31 @@
 				<h4 id="inscrire">Inscrivez-vous:</h4>
   				<div class="form-group">
     				<label for="nom">Nom:</label>
-    				<input name="lastname" type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
+    				<input name="lastname" type="text" class="form-control <?php if ($code_error_lastname == 1){ print(" is-invalid"); } ?> " id="nom" placeholder="Entrez votre nom">
   				</div>
   				<div class="form-group">
     				<label for="prenom">Prénom:</label>
-    				<input name="firstname" type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
+    				<input name="firstname" type="text" class="form-control <?php if ($code_error_firstname == 2){ print(" is-invalid"); } ?> " id="prenom" placeholder="Entrez votre prénom">
   				</div>
   				<div class="form-group">
     				<label for="adresse">Adresse:</label>
-    				<input name="address" type="text" class="form-control" id="adresse" placeholder="Nom, n° de rue">
+    				<input name="address" type="text" class="form-control <?php if ($code_error_address == 3){ print(" is-invalid"); } ?> " id="adresse" placeholder="Nom, n° de rue">
   				</div>
   				<div class="form-group">
     				<label for="ville">Ville:</label>
-    				<input name="city" type="text" class="form-control" id="ville" placeholder="Ville">
+    				<input name="city" type="text" class="form-control <?php if ($code_error_city == 4){ print(" is-invalid"); } ?> " id="ville" placeholder="Ville">
   				</div>
   				<div class="form-group">
     				<label for="mail">E-mail:</label>
-    				<input name ="mail" type="text" class="form-control" id="mail" placeholder="exemple@exemple.fr">
+    				<input name ="mail" type="text" class="form-control <?php if ($code_error_mail == 5){ print(" is-invalid"); } ?> " id="mail" placeholder="exemple@exemple.fr">
   				</div>
   				<div class="form-group">
     				<label for="mdp">Mot de passe:</label>
-    				<input name="password" type="password" class="form-control" id="mdp">
+    				<input name="password" type="password" class="form-control <?php if ($code_error_password == 6){ print(" is-invalid"); } ?> " id="mdp">
   				</div>
   				<div class="form-group">
     				<label for="confirmation">Confirmez votre mot de passe:</label>
-    				<input name="password_confirm" type="password" class="form-control" id="confirmation">
+    				<input name="password_confirm" type="password" class="form-control <?php if ($code_error_password_confirm == 7){ print(" is-invalid"); } ?> " id="confirmation">
   				</div>
   				<input type="submit">
 			</form>
