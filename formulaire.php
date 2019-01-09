@@ -159,14 +159,14 @@
     				<label for="confirmation">Confirmez votre mot de passe:</label>
     				<input name="password_confirm" type="password" class="form-control <?php if ($code_error_password_confirm == 7){ print(" is-invalid"); } ?> " id="confirmation">
   				</div>
-  				<input type="submit">
+  				<input type="submit" name="register">
 			</form>
 			<!-- <button id="creer" href="newuser.php">Créer mon compte</button> -->
 		</div>
 
 		<div id="connexion">
 
-			<form>
+      <form action="login.php" method="post">
 				<h4 id="connecter">Connectez-vous:</h4>
   				<div class="form-group">
     				<label for="mail">E-mail:</label>
@@ -177,8 +177,10 @@
     				<input type="password" class="form-control" id="mdp">
   				</div>
 
+          <input type="submit" name="login">
+
 			</form>
-			<button id="submit">Connexion</button>
+			<!-- <button id="submit">Connexion</button> -->
 
 		</div>
 	</div>
