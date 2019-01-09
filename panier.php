@@ -14,20 +14,20 @@
     <div class="items">
       <img src="img/reseau.png" class="icon">
       <p id="langue">FR/EN</p>
-      <a href="formulaire.html"><img src="img/icon_user.png" class="user"></a>
-      <a href="panier.html"><img src="img/panier.png" class="panier"></a>
+      <a href="formulaire.php"><img src="img/icon_user.png" class="user"></a>
+      <a href="panier.php"><img src="img/panier.png" class="panier"></a>
     </div>
 
     <ul class="nav">
     <div class="trait1"></div>
       <li class="nav-item menuItem">
-        <a class="nav-link active menu" href="indexfinal.html">HOME</a>
+        <a class="nav-link active menu" href="indexfinal.php">HOME</a>
       </li>
       <li class="nav-item menuItem">
         <a class="nav-link menu" href="#">IDÉES CADEAUX</a>
       </li>
       <li class="nav-item menuItem">
-        <a class="nav-link menu" href="femme.html">FEMMES</a>
+        <a class="nav-link menu" href="femme.php">FEMMES</a>
       </li>
       <img src="img/logo.png" class="tailleLogo">
       <li class="nav-item menuItem">
@@ -63,7 +63,7 @@
 			Arbre planté: 1</p>
 			<p>Total 129.90€</p>
 			<button type="button" class="btn btn-outline-secondary" id="commander">COMMANDER</button>
-      <a href="indexfinal.html"><button type="button" class="btn btn-outline-secondary" id="continuer"></a>CONTINUER MES ACHATS</button>
+      <a href="indexfinal.php"><button type="button" class="btn btn-outline-secondary" id="continuer"></a>CONTINUER MES ACHATS</button>
 		</div>
 		
 	</div>

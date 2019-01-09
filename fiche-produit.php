@@ -16,21 +16,21 @@
   <div class="item ite">
     <img src="img/reseau.png" class="reseau">
     <p id="langue">FR/EN</p>
-    <a href="formulaire.html"><img src="img/icon_user.png" class="user"></a>
-      <a href="panier.html"><img src="img/panier.png" class="panier"></a>
+    <a href="formulaire.php"><img src="img/icon_user.png" class="user"></a>
+      <a href="panier.php"><img src="img/panier.png" class="panier"></a>
   </div>
 
     <ul class="nav ">
       <div class="trait1"></div>
       
         <li class="nav-item navIt">
-          <a class="nav-link navLi" href="indexfinal.html">HOME</a>
+          <a class="nav-link navLi" href="indexfinal.php">HOME</a>
         </li>
         <li class="nav-item navIt">
           <a class="nav-link navLi" href="#">IDÉES CADEAUX</a>
       </li>
         <li class="nav-item navIt">
-          <a class="nav-link navLi" href="femme.html">FEMMES</a>
+          <a class="nav-link navLi" href="femme.php">FEMMES</a>
         </li>
         
         <img src="img/logo.png" class="tailleLogo">
@@ -51,8 +51,8 @@
     <div class="direction">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="indexfinal.html" class="home">HOME</a></li>
-                <li class="breadcrumb-item"><a href="femme.html" class="home">FEMMES</a></li>
+                <li class="breadcrumb-item"><a href="indexfinal.php" class="home">HOME</a></li>
+                <li class="breadcrumb-item"><a href="femme.php" class="home">FEMMES</a></li>
                 <li class="breadcrumb-item active" aria-current="page">IVY</li>
             </ol>
         </nav>
@@ -142,8 +142,8 @@
                   <img src="img/ivy.jpg" class="modalImg">
                 </div>
                 <div class="modal-footer">
-                  <a href="femme.html"><button type="button" class="btn btn-secondary" id="pop1">CONTINUER MES ACHATS</button></a>
-                  <a href="panier.html"><button type="button" class="btn btn-primary" id="pop1">VOIR MON PANIER</button></a>
+                  <a href="femme.php"><button type="button" class="btn btn-secondary" id="pop1">CONTINUER MES ACHATS</button></a>
+                  <a href="panier.php"><button type="button" class="btn btn-primary" id="pop1">VOIR MON PANIER</button></a>
                 </div>
               </div>
           </div>
@@ -232,7 +232,7 @@
         <img class="card-img-top ivy img" src="img/cypress.jpg" alt="Card image cap">
         <button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
         <div class="card-body card">
-          <a href="fiche-produit.html" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
+          <a href="fiche-produit.php" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
           <h5 class="card-title prix">125,00 €</h5> 
       </div>
       </div>

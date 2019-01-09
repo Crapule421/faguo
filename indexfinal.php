@@ -17,21 +17,21 @@
 		<div class="item">
 			<img src="img/reseau.png" class="reseau">
 			<p id="langue">FR/EN</p>
-			<a href="formulaire.html"><img src="img/icon_user.png" class="user"></a>
-			<a href="panier.html"><img src="img/panier.png" class="panier"></a>
+			<a href="formulaire.php"><img src="img/icon_user.png" class="user"></a>
+			<a href="panier.php"><img src="img/panier.png" class="panier"></a>
 		</div>
 
 		<ul class="nav ">
 			<div class="trait1"></div>
 			
   			<li class="nav-item">
-    			<a class="nav-link active" href="indexfinal.html">HOME</a>
+    			<a class="nav-link active" href="indexfinal.php">HOME</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="cadeau.html">IDÉES CADEAUX</a>
+    			<a class="nav-link" href="cadeau.php">IDÉES CADEAUX</a>
  			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="femme.html">FEMMES</a>
+    			<a class="nav-link" href="femme.php">FEMMES</a>
   			</li>
   			
     		<img src="img/logo.png" class="tailleLogo">
@@ -56,8 +56,8 @@
 	<div class="contenu">
 			
 		<div class="femme"> 
-			<a href="femme.html"><button type="button" class="btn btn-light btn1">DÉCOUVRIR</button></a>
-			<a href="femme.html"><img src="img/femme.jpg" class="imgEnAvant"></a>
+			<a href="femme.php"><button type="button" class="btn btn-light btn1">DÉCOUVRIR</button></a>
+			<a href="femme.php"><img src="img/femme.jpg" class="imgEnAvant"></a>
 		</div>
 
 

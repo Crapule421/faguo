@@ -18,21 +18,21 @@
 		<div class="item">
 			<img src="img/reseau.png" class="reseau">
 			<p id="langue">FR/EN</p>
-			<a href="formulaire.html"><img src="img/icon_user.png" class="user"></a>
-			<a href="panier.html"><img src="img/panier.png" class="panier"></a>
+			<a href="formulaire.php"><img src="img/icon_user.png" class="user"></a>
+			<a href="panier.php"><img src="img/panier.png" class="panier"></a>
 		</div>
 
 		<ul class="nav ">
 			<div class="trait1"></div>
 			
   			<li class="nav-item">
-    			<a class="nav-link active" href="indexfinal.html">HOME</a>
+    			<a class="nav-link active" href="indexfinal.php">HOME</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="cadeau.html">IDÉES CADEAUX</a>
+    			<a class="nav-link" href="cadeau.php">IDÉES CADEAUX</a>
  			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="femme.html">FEMMES</a>
+    			<a class="nav-link" href="femme.php">FEMMES</a>
   			</li>
   			
     		<img src="img/logo.png" class="tailleLogo">
@@ -53,7 +53,7 @@
   <div class="direction">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="indexfinal.html" class="home">HOME</a></li>
+          <li class="breadcrumb-item"><a href="indexfinal.php" class="home">HOME</a></li>
           <li class="breadcrumb-item active" aria-current="page">IDÉES CADEAUX</li>
         </ol>
     </nav>
@@ -64,7 +64,7 @@
         <img class="card-img-top ivy img" src="img/ivy.jpg" alt="Card image cap">
         <button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
         <div class="card-body card">
-          <a href="fiche-produit.html" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
+          <a href="fiche-produit.php" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
           <h5 class="card-title">125,00 €</h5> 
       </div>
       </div>
