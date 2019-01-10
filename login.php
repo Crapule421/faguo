@@ -38,7 +38,7 @@
             
 
             //Préparation de la requête
-            $req= $bdd->prepare('INSERT INTO user (mail, lastname, firstname, password, newsletter, role_id)'
+            $req= $bdd->prepare('SELECT )'
               .' VALUES (:mail, :lastname, :firstname, :password, :newsletter, :role_id)');
 
             
