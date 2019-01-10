@@ -126,7 +126,7 @@
           <a href="#" class="guide">Guide des tailles</a>
         </div>
         
-        <button type="button" class="btn btn-outline-secondary" id="acheter" data-toggle="modal" data-target="#myModal">AJOUTER AU PANIER</button>
+        <button href="user_panier.php" type="button" class="btn btn-outline-secondary" id="acheter" data-toggle="modal" data-target="#myModal">AJOUTER AU PANIER</button>
 
           <div class="modal" tabindex="-1" id="myModal"role="dialog">
               <div class="modal-dialog" role="document">

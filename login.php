@@ -50,7 +50,9 @@
           if ($login_mail = $data['mail']){
 
                 if ( password_verify($login_password, $data['password'])){
-                    print "YEAH";
+                    header('Location: user_panier.php');
+                    $_SESSION['user_id'] = $data['user_id'];
+
                 }
               
                 else{
