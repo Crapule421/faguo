@@ -4,7 +4,9 @@
   if (isset($_POST['login_mail']) && $_POST['login_mail'] != "" && (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['login_mail']))){
         $login_mail = $_POST['login_mail'];
       $_SESSION['code_error_login_mail']=0;
+      $local_error=0;
     }
+
     else{
       $_SESSION['code_error_login_mail']=1;
       $local_error=1;
@@ -12,22 +14,24 @@
 
     if (isset($_POST['login_password']) && $_POST['login_password'] != ""){
         $login_password = $_POST['login_password'];
+      $local_error=0;
     }
+
     else{
-      $_SESSION['code_error_login_password']=2;
-      $local_error=1;
+      $_SESSION['code_error_login_password']=1;
+      $local_error=2;
     }
 
 
 
-    if($local_error==1){
-
+    if($local_error!=0){
+        echo $local_error;
       // header('Location: formulaire.php');
     }
     else{
 
 
-      $hash = password_hash($password, PASSWORD_DEFAULT);
+    
     
       require_once 'config.php';
 
@@ -38,22 +42,32 @@
             
 
             //Préparation de la requête
-            $req= $bdd->prepare('SELECT user_id, mail, password FROM user WHERE mail = $login_mail');
+            $req= $bdd->prepare('SELECT user_id, mail, password FROM user WHERE mail = ?');
+            $req->execute(array($login_mail));
+            $data = $req->fetch();
+            
+                  
+          if ($login_mail = $data['mail']){
 
-           $req->execute(array($login_mail,
-                                'user_id' => $_SESSION['user_id']));
+                if ( password_verify($login_password, $data['password'])){
+                    print "YEAH";
+                }
+              
+                else{
+                    $_SESSION['code_error_login_password']=1;
+                    $local_error=4;
+                    echo $local_error;
+                    // header('Location: formulaire.php');   
+                }
+          }
 
-           while($donnees= $bdd->fetch()){
-            // $donnees = ['login_mail'];
-            if ($login_mail == $donnes && $login_password == password_hash()){
-                echo"YEAH";
-
-            }
-           }
-
-
-
-            ;} 
+          else{
+            $_SESSION['code_error_login_mail']=1;
+            $local_error=3;
+            echo $local_error;
+            // header('Location: formulaire.php');
+          }
+      }
 
           /*Si erreur ou exception, interception du message*/
 
@@ -61,13 +75,5 @@
         catch(PDOException $pe){
           die("<p>Could not connect to the database $dbname : ".$pe->getMessage()."</p>");
         }
-
-
-
-
-
-
-
-
     }
 ?>
