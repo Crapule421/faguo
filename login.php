@@ -3,8 +3,8 @@
 
   if (isset($_POST['login_mail']) && $_POST['login_mail'] != "" && (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['login_mail']))){
         $login_mail = $_POST['login_mail'];
-      $_SESSION['code_error_login_mail']=0;
-      $local_error=0;
+        $_SESSION['code_error_login_mail']=0;
+        $local_error=0;
     }
 
     else{
@@ -14,7 +14,7 @@
 
     if (isset($_POST['login_password']) && $_POST['login_password'] != ""){
         $login_password = $_POST['login_password'];
-      $local_error=0;
+        $local_error=0;
     }
 
     else{
@@ -25,8 +25,8 @@
 
 
     if($local_error!=0){
-        echo $local_error;
-      // header('Location: formulaire.php');
+        //echo $local_error;
+        header('Location: formulaire.php');
     }
     else{
 
@@ -37,7 +37,7 @@
 
       try{
       $bdd= new PDO("mysql:host=".$host.";dbname=".$dbname, $username, $password);
-      echo "<p>Connected to ".$dbname." at ".$host." successfully.</p>";
+      //echo "<p>Connected to ".$dbname." at ".$host." successfully.</p>";
       
             
 
@@ -50,24 +50,25 @@
           if ($login_mail = $data['mail']){
 
                 if ( password_verify($login_password, $data['password'])){
-                    header('Location: user_panier.php');
                     $_SESSION['user_id'] = $data['user_id'];
+                    header('Location: index.php');
 
+                    //print "YEAH";
                 }
               
                 else{
                     $_SESSION['code_error_login_password']=1;
                     $local_error=4;
-                    echo $local_error;
-                    // header('Location: formulaire.php');   
+                    //echo $local_error;
+                    header('Location: formulaire.php');   
                 }
           }
 
           else{
             $_SESSION['code_error_login_mail']=1;
             $local_error=3;
-            echo $local_error;
-            // header('Location: formulaire.php');
+            // echo $local_error;
+            header('Location: formulaire.php');
           }
       }
 
@@ -75,7 +76,7 @@
 
 
         catch(PDOException $pe){
-          die("<p>Could not connect to the database $dbname : ".$pe->getMessage()."</p>");
+          die("<p>Could not connect to the database (Error 404) $dbname : ".$pe->getMessage()."</p>");
         }
     }
 ?>
