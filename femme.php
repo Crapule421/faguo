@@ -117,87 +117,31 @@
 
 		</div>
 
+	<div class="cardX1">
 		<?php
 
 			require_once 'config.php';
-		      $conn= mysqli_connect($host,$username,$password,$dbname);
+					$conn= mysqli_connect($host,$username,$password,$dbname);
 					if (mysqli_connect_errno())
-  				{
-  					echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  				}
+					{
+						echo "Failed to connect to MySQL: " . mysqli_connect_error();
+					}
 
-				$recup = "SELECT * FROM product";
+				$recup = "SELECT * FROM product INNER JOIN photo ON product.product_id = photo.product_id";
 				$result = mysqli_query($conn, $recup) or die ("erreur de recuperation : ".mysqli_error($conn));
 				while ( $record = mysqli_fetch_assoc($result)) {
 
-
 				?>
-
-	<div class="cardX1">
-
   		<div class="card" style="width: 18rem;">
     		<img class="card-img-top ivy img" src="<?php echo $record['path'];?>" alt="Card image cap">
     		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
+    		<div class="card-body">
     			<a href="fiche-produit.html" class="card-link produit"><?php echo$record['model'];?><br><?php echo$record['smalldesc'];?></a>
      			<h5 class="card-title"><?php echo $record['buying_price'];?> €</h5>
- 			</div>
-	</div>
-<?php
+ 				</div>
+			</div>
+			<?php
 }?>
-
-	<div class="cardX2">
-  		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top birch img" src="img/birch.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">BIRCH<br>TENNIS EN LAINE GRIS CLAIR</a>
-     			<h5 class="card-title">75,00 €</h5>
- 			</div>
-  		</div>
-  		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top ivy2 img" src="img/sloe.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">SLOE<br>TENNIS EN CUIR VANILLE & CUIVRE</a>
-      			<h5 class="card-title">95,00 €</h5>
-   		 	</div>
-  		</div>
-		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top cypress img" src="img/cypress.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">IVY<br>BASKETS EN CUIR</a>
-      			<h5 class="card-title">125,00 €</h5>
-   		 	</div>
-  		</div>
-	</div>
-
-	<div class="cardX3">
-  		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top aspen img" src="img/aspen.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">ASPEN<br>BASKETS EN CUIR NUDE</a>
-     			<h5 class="card-title">120,00 €</h5>
- 			</div>
-  		</div>
-  		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top aspenor img" src="img/aspenor.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">ASPEN<br>BASKETS EN CUIR NUDE</a>
-      			<h5 class="card-title">120,00 €</h5>
-   		 	</div>
-  		</div>
-		<div class="card" style="width: 18rem;">
-    		<img class="card-img-top hosta img" src="img/hosta.jpg" alt="Card image cap">
-    		<button type="button" class="btn btn-outline-secondary middle">AJOUTER</button>
-    		<div class="card-body card">
-    			<a href="#" class="card-link produit">HOSTA<br>TENNIS EN CUIR ET SUÈDE CRÈME</a>
-      			<h5 class="card-title">100,00 €</h5>
-   		 	</div>
-  		</div>
 	</div>
 	</div>
 

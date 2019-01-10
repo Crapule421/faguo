@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mer 09 Janvier 2019 à 16:24
+-- Généré le :  Jeu 10 Janvier 2019 à 16:14
 -- Version du serveur :  5.7.24-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
@@ -154,7 +154,9 @@ CREATE TABLE `photo` (
 --
 
 INSERT INTO `photo` (`path`, `product_id`, `photo_id`) VALUES
-('img/ivy.jpeg', 1, 1);
+('img/ivy.jpg', 1, 1),
+('img/ivy2.jpg', 2, 2),
+('img/cypress.jpg', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `model`, `addingdate`, `buying_price`, `description`, `color_id`, `size_id`, `dispo_id`, `note_id`, `cat_id`, `smalldesc`) VALUES
-(1, 'IVY', '2019-01-08', 129, 'mecouille', 1, 1, 1, 1, 1, 'BASKETS EN CUIR');
+(1, 'IVY', '2019-01-08', 129, 'mecouille', 1, 1, 1, 1, 1, 'BASKETS EN CUIR BLANCHE'),
+(2, 'IVY', '2019-01-09', 129, 'coucou', 1, 2, 1, 1, 1, 'BASKETS EN CUIR BEIGE'),
+(3, 'IVY', '2019-01-09', 129, 'alloalloallo', 1, 1, 1, 2, 1, 'BASKETS EN CUIR MARRON');
 
 -- --------------------------------------------------------
 
@@ -307,8 +311,8 @@ ALTER TABLE `order_history`
 -- Index pour la table `photo`
 --
 ALTER TABLE `photo`
-  ADD KEY `INDEX` (`photo_id`),
-  ADD KEY `prodphoto` (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `INDEX` (`photo_id`);
 
 --
 -- Index pour la table `price_info`
@@ -386,7 +390,7 @@ ALTER TABLE `price_info`
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `role`
 --
@@ -425,6 +429,12 @@ ALTER TABLE `cart`
 ALTER TABLE `order_history`
   ADD CONSTRAINT `product_order` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   ADD CONSTRAINT `user_order` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Contraintes pour la table `photo`
+--
+ALTER TABLE `photo`
+  ADD CONSTRAINT `phototaking` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
 -- Contraintes pour la table `price_info`
