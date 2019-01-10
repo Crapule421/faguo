@@ -72,21 +72,21 @@
 		<div class="item">
 			<img src="img/reseau.png" class="reseau">
 			<p id="langue">FR/EN</p>
-			<a href="formulaire.html"><img src="img/icon_user.png" class="user"></a>
-      <a href="panier.html"><img src="img/panier.png" class="panier"></a>
+			<a href="formulaire.php"><img src="img/icon_user.png" class="user"></a>
+      <a href="panier.php"><img src="img/panier.png" class="panier"></a>
 		</div>
 
 		<ul class="nav ">
 			<div class="trait1"></div>
 			
   			<li class="nav-item">
-    			<a class="nav-link active" href="indexfinal.html">HOME</a>
+    			<a class="nav-link active" href="indexfinal.php">HOME</a>
   			</li>
   			<li class="nav-item">
     			<a class="nav-link" href="#">IDÉES CADEAUX</a>
  			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="femme.html">FEMMES</a>
+    			<a class="nav-link" href="femme.php">FEMMES</a>
   			</li>
   			
     		<img src="img/logo.png" class="tailleLogo">
@@ -170,11 +170,11 @@
 				<h4 id="connecter">Connectez-vous:</h4>
   				<div class="form-group">
     				<label for="mail">E-mail:</label>
-    				<input type="text" class="form-control" id="mail" placeholder="exemple@exemple.fr">
+    				<input type="text" class="form-control" id="mail" placeholder="exemple@exemple.fr" name="login_mail">
   				</div>
   				<div class="form-group">
     				<label for="mdp">Mot de passe:</label>
-    				<input type="password" class="form-control" id="mdp">
+    				<input type="password" class="form-control" id="mdp" name="login_password">
   				</div>
 
           <input type="submit" name="login">

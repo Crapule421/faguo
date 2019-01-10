@@ -1,8 +1,8 @@
 <?php
   session_start();
 
-  if (isset($_POST['mail']) && $_POST['mail'] != "" && (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['mail']))){
-        $mail = $_POST['mail'];
+  if (isset($_POST['login_mail']) && $_POST['login_mail'] != "" && (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['login_mail']))){
+        $login_mail = $_POST['login_mail'];
       $_SESSION['code_error_login_mail']=0;
     }
     else{
@@ -10,8 +10,8 @@
       $local_error=1;
     }
 
-    if (isset($_POST['password']) && $_POST['password'] != ""){
-        $password = $_POST['password'];
+    if (isset($_POST['login_password']) && $_POST['login_password'] != ""){
+        $login_password = $_POST['login_password'];
     }
     else{
       $_SESSION['code_error_login_password']=2;
@@ -22,7 +22,7 @@
 
     if($local_error==1){
 
-      header('Location: formulaire.php');
+      // header('Location: formulaire.php');
     }
     else{
 
@@ -38,27 +38,22 @@
             
 
             //Préparation de la requête
-            $req= $bdd->prepare('SELECT )'
-              .' VALUES (:mail, :lastname, :firstname, :password, :newsletter, :role_id)');
+            $req= $bdd->prepare('SELECT user_id, mail, password FROM user WHERE mail = $login_mail');
 
-            
+           $req->execute(array($login_mail,
+                                'user_id' => $_SESSION['user_id']));
 
+           while($donnees= $bdd->fetch()){
+            // $donnees = ['login_mail'];
+            if ($login_mail == $donnes && $login_password == password_hash()){
+                echo"YEAH";
 
-
-            //Requete SQL
-            $req->execute(array(
-                        'mail' =>$mail,
-                       'lastname' =>$lastname,
-                       'firstname' =>$firstname,
-                       'password' =>$hash,
-                       'newsletter' => 0,
-                       'role_id' => 0
-                     )
-            
+            }
+           }
 
 
-            
-          );}
+
+            ;} 
 
           /*Si erreur ou exception, interception du message*/
 
