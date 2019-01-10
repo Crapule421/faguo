@@ -117,7 +117,7 @@
 
 		</div>
 
-	<div class="cardX1">
+	<div class="d-flex flex-wrap cardX1">
 		<?php
 
 			require_once 'config.php';
@@ -128,6 +128,7 @@
 					}
 
 				$recup = "SELECT * FROM product INNER JOIN photo ON product.product_id = photo.product_id";
+				$_SESSION['product_id'] = $product_id;
 				$result = mysqli_query($conn, $recup) or die ("erreur de recuperation : ".mysqli_error($conn));
 				while ( $record = mysqli_fetch_assoc($result)) {
 
